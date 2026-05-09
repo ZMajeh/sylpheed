@@ -1,0 +1,13 @@
+
+(process:29196): Sylpheed-WARNING **: 14:59:27.742: AllocConsole() failed
+
+
+(sylpheed.exe:29196): GLib-GObject-CRITICAL **: 14:59:29.987: cannot register existing type 'GdkPixbuf'
+
+(sylpheed.exe:29196): GLib-GObject-CRITICAL **: 14:59:29.987: g_type_add_interface_static: assertion 'G_TYPE_IS_INSTANTIATABLE (instance_type)' failed
+
+(sylpheed.exe:29196): GLib-GObject-CRITICAL **: 14:59:29.987: g_type_add_interface_static: assertion 'G_TYPE_IS_INSTANTIATABLE (instance_type)' failed
+
+(sylpheed.exe:29196): GLib-CRITICAL **: 14:59:29.987: g_once_init_leave_pointer: assertion 'result != 0' failed
+
+(sylpheed.exe:29196): GLib-GObject-CRITICAL **: 14:59:29.987: g_object_new_valist: assertion 'G_TYPE_IS_OBJECT (object_type)' failed

@@ -132,24 +132,24 @@ static void mimeview_check_signature	(MimeView	*mimeview);
 
 static GtkItemFactoryEntry mimeview_popup_entries[] =
 {
-	{N_("/_Open"),		  NULL, mimeview_launch,	  0, NULL},
-	{N_("/Open _with..."),	  NULL, mimeview_open_with,	  0, NULL},
-	{N_("/_Display as text"), NULL, mimeview_display_as_text, 0, NULL},
-	{N_("/_Save as..."),	  NULL, mimeview_save_as,	  0, NULL},
-	{N_("/Save _all..."),	  NULL, mimeview_save_all,	  0, NULL},
-	{N_("/_Print..."),	  NULL, mimeview_print,		  0, NULL},
+	{N_("/_Open"),		  NULL, (GtkItemFactoryCallback) mimeview_launch,	  0, NULL, NULL},
+	{N_("/Open _with..."),	  NULL, (GtkItemFactoryCallback) mimeview_open_with,	  0, NULL, NULL},
+	{N_("/_Display as text"), NULL, (GtkItemFactoryCallback) mimeview_display_as_text, 0, NULL, NULL},
+	{N_("/_Save as..."),	  NULL, (GtkItemFactoryCallback) mimeview_save_as,	  0, NULL, NULL},
+	{N_("/Save _all..."),	  NULL, (GtkItemFactoryCallback) mimeview_save_all,	  0, NULL, NULL},
+	{N_("/_Print..."),	  NULL, (GtkItemFactoryCallback) mimeview_print,		  0, NULL, NULL},
 	{N_("/---"),		  NULL, NULL,			  0, "<Separator>"},
 	{N_("/_Reply"),		  NULL, NULL,			  0, "<Branch>"},
-	{N_("/_Reply/_Reply"),	  NULL, mimeview_reply,		  COMPOSE_REPLY, NULL},
+	{N_("/_Reply/_Reply"),	  NULL, (GtkItemFactoryCallback) mimeview_reply,		  COMPOSE_REPLY, NULL, NULL},
 	{N_("/_Reply/Reply to _all"),
-				  NULL, mimeview_reply,		  COMPOSE_REPLY_TO_ALL, NULL},
+				  NULL, (GtkItemFactoryCallback) mimeview_reply,		  COMPOSE_REPLY_TO_ALL, NULL, NULL},
 	{N_("/_Reply/Reply to _sender"),
-				  NULL, mimeview_reply,		  COMPOSE_REPLY_TO_SENDER, NULL},
+				  NULL, (GtkItemFactoryCallback) mimeview_reply,		  COMPOSE_REPLY_TO_SENDER, NULL, NULL},
 	{N_("/_Reply/Reply to mailing _list"),
-				  NULL, mimeview_reply,		  COMPOSE_REPLY_TO_LIST, NULL},
+				  NULL, (GtkItemFactoryCallback) mimeview_reply,		  COMPOSE_REPLY_TO_LIST, NULL, NULL},
 #if USE_GPGME
 	{N_("/---"),		  NULL, NULL,			  0, "<Separator>"},
-        {N_("/_Check signature"), NULL, mimeview_check_signature, 0, NULL}
+        {N_("/_Check signature"), NULL, (GtkItemFactoryCallback) mimeview_check_signature, 0, NULL, NULL}
 #endif
 };
 

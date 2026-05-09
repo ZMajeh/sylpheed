@@ -29,6 +29,7 @@
 #include <gtk/gtkrc.h>
 #include <gtk/gtkstock.h>
 #include <gtk/gtkaccelmap.h>
+#include <gdk/gdkwin32.h>
 
 #include <stdio.h>
 #include <stdlib.h>

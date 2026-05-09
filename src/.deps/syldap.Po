@@ -1,0 +1,2 @@
+syldap.o: syldap.c ../config.h
+../config.h:

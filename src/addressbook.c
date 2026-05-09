@@ -410,48 +410,48 @@ static GtkTargetEntry addressbook_drag_types[] =
 
 static GtkItemFactoryEntry addressbook_entries[] =
 {
-	{N_("/_File"),			NULL,	NULL, 0, "<Branch>"},
-	{N_("/_File/New _Book"),	NULL,	addressbook_new_book_cb,        0, NULL},
-	{N_("/_File/New _vCard"),	NULL,	addressbook_new_vcard_cb,       0, NULL},
+	{N_("/_File"),			NULL,	NULL, 0, "<Branch>", NULL},
+	{N_("/_File/New _Book"),	NULL,	(GtkItemFactoryCallback) addressbook_new_book_cb,        0, NULL},
+	{N_("/_File/New _vCard"),	NULL,	(GtkItemFactoryCallback) addressbook_new_vcard_cb,       0, NULL},
 #ifdef USE_JPILOT
 	{N_("/_File/New _JPilot"),	NULL,	addressbook_new_jpilot_cb,      0, NULL},
 #endif
 #ifdef USE_LDAP
 	{N_("/_File/New _LDAP Server"),	NULL,	addressbook_new_ldap_cb,        0, NULL},
 #endif
-	{N_("/_File/---"),		NULL,		NULL, 0, "<Separator>"},
-	{N_("/_File/_Edit"),		NULL,		addressbook_treenode_edit_cb,   0, NULL},
-	{N_("/_File/_Delete"),		NULL,		addressbook_treenode_delete_cb, 0, NULL},
-	{N_("/_File/---"),		NULL,		NULL, 0, "<Separator>"},
-	{N_("/_File/_Save"),		"<control>S",	addressbook_file_save_cb,       0, NULL},
-	{N_("/_File/_Close"),		"<control>W",	close_cb, 0, NULL},
+	{N_("/_File/---"),		NULL,		NULL, 0, "<Separator>", NULL},
+	{N_("/_File/_Edit"),		NULL,		(GtkItemFactoryCallback) addressbook_treenode_edit_cb,   0, NULL},
+	{N_("/_File/_Delete"),		NULL,		(GtkItemFactoryCallback) addressbook_treenode_delete_cb, 0, NULL, NULL},
+	{N_("/_File/---"),		NULL,		NULL, 0, "<Separator>", NULL},
+	{N_("/_File/_Save"),		"<control>S",	(GtkItemFactoryCallback) addressbook_file_save_cb,       0, NULL},
+	{N_("/_File/_Close"),		"<control>W",	(GtkItemFactoryCallback) close_cb, 0, NULL, NULL},
 
-	{N_("/_Edit"),			NULL,		NULL, 0, "<Branch>"},
-	{N_("/_Edit/_Copy"),		"<control>C",	addressbook_copy_address_cb,    0, NULL},
-	{N_("/_Edit/_Paste"),		"<control>V",	addressbook_paste_address_cb,    0, NULL},
+	{N_("/_Edit"),			NULL,		NULL, 0, "<Branch>", NULL},
+	{N_("/_Edit/_Copy"),		"<control>C",	(GtkItemFactoryCallback) addressbook_copy_address_cb,    0, NULL},
+	{N_("/_Edit/_Paste"),		"<control>V",	(GtkItemFactoryCallback) addressbook_paste_address_cb,    0, NULL},
 
-	{N_("/_Address"),		NULL,		NULL, 0, "<Branch>"},
-	{N_("/_Address/New _Address"),	"<control>N",	addressbook_new_address_cb,     0, NULL},
-	{N_("/_Address/New _Group"),	"<control>G",	addressbook_new_group_cb,       0, NULL},
-	{N_("/_Address/New _Folder"),	"<control>F",	addressbook_new_folder_cb,      0, NULL},
-	{N_("/_Address/---"),		NULL,		NULL, 0, "<Separator>"},
+	{N_("/_Address"),		NULL,		NULL, 0, "<Branch>", NULL},
+	{N_("/_Address/New _Address"),	"<control>N",	(GtkItemFactoryCallback) addressbook_new_address_cb,     0, NULL},
+	{N_("/_Address/New _Group"),	"<control>G",	(GtkItemFactoryCallback) addressbook_new_group_cb,       0, NULL},
+	{N_("/_Address/New _Folder"),	"<control>F",	(GtkItemFactoryCallback) addressbook_new_folder_cb,      0, NULL},
+	{N_("/_Address/---"),		NULL,		NULL, 0, "<Separator>", NULL},
 	{N_("/_Address/Add _to recipient"),
-					"<control>M",	addressbook_compose_to_cb, COMPOSE_ENTRY_TO, NULL},
+					"<control>M",	(GtkItemFactoryCallback) addressbook_compose_to_cb, COMPOSE_ENTRY_TO, NULL, NULL},
 	{N_("/_Address/Add to _Cc"),
-					NULL,		addressbook_compose_to_cb, COMPOSE_ENTRY_CC, NULL},
+					NULL,		(GtkItemFactoryCallback) addressbook_compose_to_cb, COMPOSE_ENTRY_CC, NULL, NULL},
 	{N_("/_Address/Add to _Bcc"),
-					NULL,		addressbook_compose_to_cb, COMPOSE_ENTRY_BCC, NULL},
-	{N_("/_Address/---"),		NULL,		NULL, 0, "<Separator>"},
-	{N_("/_Address/_Edit"),		"<control>Return",	addressbook_edit_address_cb,    0, NULL},
-	{N_("/_Address/_Delete"),	"Delete",	addressbook_delete_address_cb,  0, NULL},
+					NULL,		(GtkItemFactoryCallback) addressbook_compose_to_cb, COMPOSE_ENTRY_BCC, NULL, NULL},
+	{N_("/_Address/---"),		NULL,		NULL, 0, "<Separator>", NULL},
+	{N_("/_Address/_Edit"),		"<control>Return",	(GtkItemFactoryCallback) addressbook_edit_address_cb,    0, NULL},
+	{N_("/_Address/_Delete"),	"Delete",	(GtkItemFactoryCallback) addressbook_delete_address_cb,  0, NULL},
 
-	{N_("/_Tools"),			NULL,		NULL, 0, "<Branch>"},
+	{N_("/_Tools"),			NULL,		NULL, 0, "<Branch>", NULL},
 	{N_("/_Tools/Import _LDIF file"), NULL,		addressbook_import_ldif_cb,	0, NULL},
 	{N_("/_Tools/Import _CSV file"), NULL,		addressbook_import_csv_cb,	0, NULL},
-	{N_("/_Tools/---"),		NULL,		NULL, 0, "<Separator>"},
+	{N_("/_Tools/---"),		NULL,		NULL, 0, "<Separator>", NULL},
 	{N_("/_Tools/Export to C_SV file"), NULL,	addressbook_export_csv_cb,	0, NULL}, 
-	{N_("/_Help"),			NULL,		NULL, 0, "<Branch>"},
-	{N_("/_Help/_About"),		NULL,		about_show, 0, NULL}
+	{N_("/_Help"),			NULL,		NULL, 0, "<Branch>", NULL},
+	{N_("/_Help/_About"),		NULL,		about_show, 0, NULL, NULL}
 };
 
 /* New options to be added. */
@@ -468,32 +468,32 @@ static GtkItemFactoryEntry addressbook_entries[] =
 
 static GtkItemFactoryEntry addressbook_tree_popup_entries[] =
 {
-	{N_("/New _Address"),	NULL, addressbook_new_address_cb, 0, NULL},
-	{N_("/New _Group"),	NULL, addressbook_new_group_cb,   0, NULL},
-	{N_("/New _Folder"),	NULL, addressbook_new_folder_cb,  0, NULL},
-	{N_("/---"),		NULL, NULL, 0, "<Separator>"},
-	{N_("/_Edit"),		NULL, addressbook_treenode_edit_cb,   0, NULL},
-	{N_("/_Delete"),	NULL, addressbook_treenode_delete_cb, 0, NULL}
+	{N_("/New _Address"),	NULL, (GtkItemFactoryCallback) addressbook_new_address_cb, 0, NULL, NULL},
+	{N_("/New _Group"),	NULL, (GtkItemFactoryCallback) addressbook_new_group_cb,   0, NULL},
+	{N_("/New _Folder"),	NULL, (GtkItemFactoryCallback) addressbook_new_folder_cb,  0, NULL},
+	{N_("/---"),		NULL, NULL, 0, "<Separator>", NULL},
+	{N_("/_Edit"),		NULL, (GtkItemFactoryCallback) addressbook_treenode_edit_cb,   0, NULL},
+	{N_("/_Delete"),	NULL, (GtkItemFactoryCallback) addressbook_treenode_delete_cb, 0, NULL, NULL}
 };
 
 static GtkItemFactoryEntry addressbook_list_popup_entries[] =
 {
-	{N_("/New _Address"),	NULL, addressbook_new_address_cb,  0, NULL},
-	{N_("/New _Group"),	NULL, addressbook_new_group_cb,    0, NULL},
-	{N_("/New _Folder"),	NULL, addressbook_new_folder_cb,   0, NULL},
-	{N_("/---"),		NULL, NULL, 0, "<Separator>"},
+	{N_("/New _Address"),	NULL, (GtkItemFactoryCallback) addressbook_new_address_cb,  0, NULL},
+	{N_("/New _Group"),	NULL, (GtkItemFactoryCallback) addressbook_new_group_cb,    0, NULL},
+	{N_("/New _Folder"),	NULL, (GtkItemFactoryCallback) addressbook_new_folder_cb,   0, NULL},
+	{N_("/---"),		NULL, NULL, 0, "<Separator>", NULL},
 	{N_("/Add _to recipient"),
-				NULL, addressbook_compose_to_cb, COMPOSE_ENTRY_TO, NULL},
+				NULL, (GtkItemFactoryCallback) addressbook_compose_to_cb, COMPOSE_ENTRY_TO, NULL, NULL},
 	{N_("/Add t_o Cc"),
-				NULL, addressbook_compose_to_cb, COMPOSE_ENTRY_CC, NULL},
+				NULL, (GtkItemFactoryCallback) addressbook_compose_to_cb, COMPOSE_ENTRY_CC, NULL, NULL},
 	{N_("/Add to _Bcc"),
-				NULL, addressbook_compose_to_cb, COMPOSE_ENTRY_BCC, NULL},
-	{N_("/---"),		NULL, NULL, 0, "<Separator>"},
-	{N_("/_Edit"),		NULL, addressbook_edit_address_cb,   0, NULL},
-	{N_("/_Delete"),	NULL, addressbook_delete_address_cb, 0, NULL},
-	{N_("/---"),		NULL, NULL, 0, "<Separator>"},
-	{N_("/_Copy"),		NULL, addressbook_copy_address_cb,  0, NULL},
-	{N_("/_Paste"),		NULL, addressbook_paste_address_cb, 0, NULL}
+				NULL, (GtkItemFactoryCallback) addressbook_compose_to_cb, COMPOSE_ENTRY_BCC, NULL, NULL},
+	{N_("/---"),		NULL, NULL, 0, "<Separator>", NULL},
+	{N_("/_Edit"),		NULL, (GtkItemFactoryCallback) addressbook_edit_address_cb,   0, NULL},
+	{N_("/_Delete"),	NULL, (GtkItemFactoryCallback) addressbook_delete_address_cb, 0, NULL, NULL},
+	{N_("/---"),		NULL, NULL, 0, "<Separator>", NULL},
+	{N_("/_Copy"),		NULL, (GtkItemFactoryCallback) addressbook_copy_address_cb,  0, NULL},
+	{N_("/_Paste"),		NULL, (GtkItemFactoryCallback) addressbook_paste_address_cb, 0, NULL, NULL}
 };
 
 

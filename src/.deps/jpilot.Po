@@ -1,0 +1,2 @@
+jpilot.o: jpilot.c ../config.h
+../config.h:

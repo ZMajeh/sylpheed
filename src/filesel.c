@@ -31,7 +31,15 @@
 #  include <windows.h>
 #  include <objbase.h>
 #  include <objidl.h>
+#  define Folder Win32Folder
+#  define FolderItem Win32FolderItem
+#  define SORT_ASCENDING Win32SORT_ASCENDING
+#  define SORT_DESCENDING Win32SORT_DESCENDING
 #  include <shlobj.h>
+#  undef Folder
+#  undef FolderItem
+#  undef SORT_ASCENDING
+#  undef SORT_DESCENDING
 #endif
 
 #include "main.h"

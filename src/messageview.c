@@ -164,32 +164,32 @@ static void about_cb			(gpointer	 data,
 static GtkItemFactoryEntry msgview_entries[] =
 {
 	{N_("/_File"),			NULL, NULL, 0, "<Branch>"},
-	{N_("/_File/_Save as..."),	NULL, save_as_cb, 0, NULL},
+	{N_("/_File/_Save as..."),	NULL, (GtkItemFactoryCallback) save_as_cb, 0, NULL, NULL},
 	{N_("/_File/---"),		NULL, NULL, 0, "<Separator>"},
 #if GTK_CHECK_VERSION(2, 10, 0)
-	{N_("/_File/Page set_up..."),	NULL, page_setup_cb, 0, NULL},
+	{N_("/_File/Page set_up..."),	NULL, (GtkItemFactoryCallback) page_setup_cb, 0, NULL, NULL},
 #endif
-	{N_("/_File/_Print..."),	NULL, print_cb, 0, NULL},
+	{N_("/_File/_Print..."),	NULL, (GtkItemFactoryCallback) print_cb, 0, NULL, NULL},
 	{N_("/_File/---"),		NULL, NULL, 0, "<Separator>"},
-	{N_("/_File/_Close"),		NULL, close_cb, 0, NULL},
+	{N_("/_File/_Close"),		NULL, (GtkItemFactoryCallback) close_cb, 0, NULL, NULL},
 
 	{N_("/_Edit"),			NULL, NULL, 0, "<Branch>"},
-	{N_("/_Edit/_Copy"),		NULL, copy_cb, 0, NULL},
-	{N_("/_Edit/Select _all"),	NULL, allsel_cb, 0, NULL},
+	{N_("/_Edit/_Copy"),		NULL, (GtkItemFactoryCallback) copy_cb, 0, NULL, NULL},
+	{N_("/_Edit/Select _all"),	NULL, (GtkItemFactoryCallback) allsel_cb, 0, NULL, NULL},
 	{N_("/_Edit/---"),		NULL, NULL, 0, "<Separator>"},
 	{N_("/_Edit/_Find in current message..."),
-					NULL, search_cb, 0, NULL},
+					NULL, (GtkItemFactoryCallback) search_cb, 0, NULL, NULL},
 
 	{N_("/_View"),			NULL, NULL, 0, "<Branch>"},
 
 #define ENC_SEPARATOR \
 	{N_("/_View/Character _encoding/---"),	NULL, NULL, 0, "<Separator>"}
 #define ENC_ACTION(action) \
-	NULL, set_charset_cb, action, "/View/Character encoding/Auto detect"
+	NULL, (GtkItemFactoryCallback) set_charset_cb, action, "/View/Character encoding/Auto detect"
 
 	{N_("/_View/Character _encoding"),	NULL, NULL, 0, "<Branch>"},
 	{N_("/_View/Character _encoding/_Auto detect"),
-					NULL, set_charset_cb, C_AUTO, "<RadioItem>"},
+					NULL, (GtkItemFactoryCallback) set_charset_cb, C_AUTO, "<RadioItem>", NULL},
 	ENC_SEPARATOR,
 	{N_("/_View/Character _encoding/7bit ascii (US-ASC_II)"),
 	 ENC_ACTION(C_US_ASCII)},
@@ -273,51 +273,51 @@ static GtkItemFactoryEntry msgview_entries[] =
 #undef ENC_ACTION
 
 	{N_("/_View/---"),		NULL, NULL, 0, "<Separator>"},
-	{N_("/_View/Mess_age source"),	NULL, view_source_cb, 0, NULL},
+	{N_("/_View/Mess_age source"),	NULL, (GtkItemFactoryCallback) view_source_cb, 0, NULL, NULL},
 	{N_("/_View/All _headers"),
-					NULL, show_all_header_cb, 0, "<ToggleItem>"},
+					NULL, (GtkItemFactoryCallback) show_all_header_cb, 0, "<ToggleItem>", NULL},
 
 	{N_("/_Message"),		NULL, NULL, 0, "<Branch>"},
 	{N_("/_Message/Compose _new message"),
-					NULL, compose_cb, 0, NULL},
+					NULL, (GtkItemFactoryCallback) compose_cb, 0, NULL, NULL},
 	{N_("/_Message/---"),		NULL, NULL, 0, "<Separator>"},
-	{N_("/_Message/_Reply"),	NULL, reply_cb, COMPOSE_REPLY, NULL},
+	{N_("/_Message/_Reply"),	NULL, (GtkItemFactoryCallback) reply_cb, COMPOSE_REPLY, NULL},
 	{N_("/_Message/Repl_y to/_all"),
-					NULL, reply_cb, COMPOSE_REPLY_TO_ALL, NULL},
+					NULL, (GtkItemFactoryCallback) reply_cb, COMPOSE_REPLY_TO_ALL, NULL},
 	{N_("/_Message/Repl_y to/_sender"),
-					NULL, reply_cb, COMPOSE_REPLY_TO_SENDER, NULL},
+					NULL, (GtkItemFactoryCallback) reply_cb, COMPOSE_REPLY_TO_SENDER, NULL},
 	{N_("/_Message/Repl_y to/mailing _list"),
-					NULL, reply_cb, COMPOSE_REPLY_TO_LIST, NULL},
+					NULL, (GtkItemFactoryCallback) reply_cb, COMPOSE_REPLY_TO_LIST, NULL},
 	{N_("/_Message/---"),		NULL, NULL, 0, "<Separator>"},
-	{N_("/_Message/_Forward"),	NULL, reply_cb, COMPOSE_FORWARD, NULL},
+	{N_("/_Message/_Forward"),	NULL, (GtkItemFactoryCallback) reply_cb, COMPOSE_FORWARD, NULL},
 	{N_("/_Message/For_ward as attachment"),
-					NULL, reply_cb, COMPOSE_FORWARD_AS_ATTACH, NULL},
-	{N_("/_Message/Redirec_t"),	NULL, reply_cb, COMPOSE_REDIRECT, NULL},
+					NULL, (GtkItemFactoryCallback) reply_cb, COMPOSE_FORWARD_AS_ATTACH, NULL},
+	{N_("/_Message/Redirec_t"),	NULL, (GtkItemFactoryCallback) reply_cb, COMPOSE_REDIRECT, NULL},
 	{N_("/_Message/---"),		NULL, NULL, 0, "<Separator>"},
-	{N_("/_Message/Re-_edit"),	NULL, reedit_cb, 0, NULL},
+	{N_("/_Message/Re-_edit"),	NULL, (GtkItemFactoryCallback) reedit_cb, 0, NULL, NULL},
 
 	{N_("/_Tools"),			NULL, NULL, 0, "<Branch>"},
-	{N_("/_Tools/_Address book"),	NULL, addressbook_open_cb, 0, NULL},
+	{N_("/_Tools/_Address book"),	NULL, (GtkItemFactoryCallback) addressbook_open_cb, 0, NULL, NULL},
 	{N_("/_Tools/Add sender to address boo_k"),
-					NULL, add_address_cb, 0, NULL},
+					NULL, (GtkItemFactoryCallback) add_address_cb, 0, NULL, NULL},
 	{N_("/_Tools/---"),		NULL, NULL, 0, "<Separator>"},
 	{N_("/_Tools/_Create filter rule"),
 					NULL, NULL, 0, "<Branch>"},
 	{N_("/_Tools/_Create filter rule/_Automatically"),
-					NULL, create_filter_cb, FLT_BY_AUTO, NULL},
+					NULL, (GtkItemFactoryCallback) create_filter_cb, FLT_BY_AUTO, NULL},
 	{N_("/_Tools/_Create filter rule/by _From"),
-					NULL, create_filter_cb, FLT_BY_FROM, NULL},
+					NULL, (GtkItemFactoryCallback) create_filter_cb, FLT_BY_FROM, NULL},
 	{N_("/_Tools/_Create filter rule/by _To"),
-					NULL, create_filter_cb, FLT_BY_TO, NULL},
+					NULL, (GtkItemFactoryCallback) create_filter_cb, FLT_BY_TO, NULL},
 	{N_("/_Tools/_Create filter rule/by _Subject"),
-					NULL, create_filter_cb, FLT_BY_SUBJECT, NULL},
+					NULL, (GtkItemFactoryCallback) create_filter_cb, FLT_BY_SUBJECT, NULL},
 #ifndef G_OS_WIN32
 	{N_("/_Tools/---"),		NULL, NULL, 0, "<Separator>"},
 	{N_("/_Tools/Actio_ns"),	NULL, NULL, 0, "<Branch>"},
 #endif
 
 	{N_("/_Help"),			NULL, NULL, 0, "<Branch>"},
-	{N_("/_Help/_About"),		NULL, about_cb, 0, NULL}
+	{N_("/_Help/_About"),		NULL, (GtkItemFactoryCallback) about_cb, 0, NULL, NULL}
 };
 
 
@@ -1260,3 +1260,4 @@ static void about_cb(gpointer data, guint action, GtkWidget *widget)
 {
 	about_show();
 }
+
