@@ -59,8 +59,8 @@ gint oauth2_get_token   (const gchar     *user,
 		g_strfreev(lines);
 		return 0;
 	} else {
-		g_warning("OAuth2 helper execution failed.\n");
-		g_error_free(error);
+		g_warning("OAuth2 helper execution failed: %s\n", error ? error->message : "Unknown error");
+		if (error) g_error_free(error);
 		return -1;
 	}
 }
